@@ -14,7 +14,7 @@ yarn-error.log
 
 # Docker
 Dockerfile.dev
-*.dockerignore
+# *.dockerignore
 
 # Logs
 logs/
@@ -57,3 +57,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+
+# Root directory files
+# ----------------------------------
+idpicker*

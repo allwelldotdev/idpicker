@@ -2,7 +2,7 @@
 Services make HTTP API calls (requests) to FastAPI ai-backend ('ab' for short) API
 */
 
-import { axiosAB } from "../utils/aiUtils.js";
+import { axiosAB } from "../utils/ai.js";
 
 // GET ai-backend '/'
 export const abReadRoot = async () => {

@@ -1,5 +1,5 @@
-fastapi[all]
-python-dotenv
-langchain
-openai
-crewai[tools]
+fastapi[all]==0.115.12
+python-dotenv==1.1.0
+langchain==0.3.24
+openai==1.76.2
+crewai[tools]==0.118.0

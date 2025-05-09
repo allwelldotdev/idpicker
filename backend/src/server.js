@@ -1,9 +1,9 @@
 import express from "express";
-import env from "./config/envConfig.js";
+import env from "./config/env.js";
 
 // Importing Routes
-const aiRoutes = require("./routes/aiRoutes");
-const authRoutes = require("./routes/authRoutes");
+import aiRoutes from "./routes/aiRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 

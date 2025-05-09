@@ -7,7 +7,7 @@ import {
   abReportsShort,
   abReportsFull,
 } from "../services/aiService.js";
-import { ctrlerError } from "../utils/aiUtils.js";
+import { ctrlerError } from "../utils/ai.js";
 
 // AI Read Root
 export const aiReadRoot = async (req, res) => {

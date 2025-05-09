@@ -1,5 +1,5 @@
 import axios from "axios";
-import env from "../config/envConfig.js";
+import env from "../config/env.js";
 
 // Global axios ai-backend config
 export const axiosAB = axios.create({
