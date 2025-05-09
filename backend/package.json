@@ -1,0 +1,17 @@
+{
+  "name": "idpicker-app-backend",
+  "version": "0.0.1",
+  "description": "Building IDPicker: Turkish Next-Gen Education and Career Choice Software (AI-Powered)",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Allwell Agwu-Okoro",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}

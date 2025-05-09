@@ -1,0 +1,13 @@
+[project]
+name = "idpicker-ai-backend"
+version = "0.1.0"
+description = "AI Inference API Backend for IDPicker Software"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "crewai[tools]>=0.118.0",
+    "fastapi[all]>=0.115.12",
+    "langchain>=0.3.24",
+    "openai>=1.76.2",
+    "python-dotenv>=1.1.0",
+]
