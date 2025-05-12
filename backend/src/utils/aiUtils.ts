@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Response } from "express";
 import env from "../config/env.js";
 
 // Global axios ai-backend config
@@ -8,10 +9,10 @@ export const axiosAB = axios.create({
 
 // Controller Error Func
 export const ctrlerError = function (
-  response,
-  error,
-  message,
-  statusCode = 500
+  response: Response,
+  error: any,
+  message: string,
+  statusCode: number = 500
 ) {
   return response.status(statusCode).json({
     success: false,

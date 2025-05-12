@@ -1,4 +1,4 @@
-import express from "express";
+import express, {NextFunction, Request, Response} from "express";
 import env from "./config/env.js";
 
 // Importing Routes
@@ -9,13 +9,13 @@ const app = express();
 
 app.use(express.json());
 
-// Mount all routes under /api
+// Middleware to mount all routes under /api/**
 app.use(
   "/api",
-  (req, res, next) => {
+  (req: Request, res: Response, next: NextFunction): void => {
     // Handle /api/ (home route)
-    if (req.path === "/" || req.path === "")
-      return res.json({ message: "IDPicker APP Server is running!" });
+    // if (req.path === "/" || req.path === "")
+    //   return res.json({ message: "IDPicker APP Server is running!" });
     next(); // Pass onto next middleware (e.g., aiRoutes)
   },
   [

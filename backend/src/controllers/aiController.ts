@@ -7,10 +7,11 @@ import {
   abReportsShort,
   abReportsFull,
 } from "../services/aiService.js";
-import { ctrlerError } from "../utils/ai.js";
+import { ctrlerError } from "../utils/aiUtils.js";
+import {Request, Response} from 'express';
 
 // AI Read Root
-export const aiReadRoot = async (req, res) => {
+export const aiReadRoot = async (req: Request, res: Response) => {
   try {
     const data = await abReadRoot();
     res.json({ success: true, data });
@@ -20,7 +21,7 @@ export const aiReadRoot = async (req, res) => {
 };
 
 // Character Analysis Controllers
-export const generateCharacterAnalysis = async (req, res) => {
+export const generateCharacterAnalysis = async (req: Request, res: Response) => {
   try {
     const data = await abGenerateCharacterAnalysis();
     res.json({ success: true, data });
@@ -29,7 +30,7 @@ export const generateCharacterAnalysis = async (req, res) => {
   }
 };
 
-export const getCharacterAnalysis = async (req, res) => {
+export const getCharacterAnalysis = async (req: Request, res: Response) => {
   try {
     const data = await abGetCharacterAnalysis();
     res.json({ success: true, data });
@@ -39,7 +40,7 @@ export const getCharacterAnalysis = async (req, res) => {
 };
 
 // Career Recommendations Controllers
-export const getCareerRecommendations = async (req, res) => {
+export const getCareerRecommendations = async (req: Request, res: Response) => {
   try {
     const data = await abCareerRecommendations();
     res.json({ success: true, data });
@@ -48,7 +49,7 @@ export const getCareerRecommendations = async (req, res) => {
   }
 };
 
-export const getCareerRoadmap = async (req, res) => {
+export const getCareerRoadmap = async (req: Request, res: Response) => {
   try {
     const data = await abCareerRoadmap();
     res.json({ success: true, data });
@@ -58,7 +59,7 @@ export const getCareerRoadmap = async (req, res) => {
 };
 
 // Report Generation Controllers
-export const getReportsShort = async (req, res) => {
+export const getReportsShort = async (req: Request, res: Response) => {
   try {
     const data = await abReportsShort();
     res.json({ success: true, data });
@@ -67,7 +68,7 @@ export const getReportsShort = async (req, res) => {
   }
 };
 
-export const getReportsFull = async (req, res) => {
+export const getReportsFull = async (req: Request, res: Response) => {
   try {
     const data = await abReportsFull();
     res.json({ success: true, data });
