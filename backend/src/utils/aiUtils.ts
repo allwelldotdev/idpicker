@@ -4,7 +4,7 @@ import env from "../config/env.js";
 
 // Global axios ai-backend config
 export const axiosAB = axios.create({
-  baseURL: env.AI_API_URL,
+  baseURL: env.AI_API_URL as string,
 });
 
 // Controller Error Func

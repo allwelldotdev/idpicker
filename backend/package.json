@@ -5,9 +5,10 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "devStart:build": "tsc -w",
-    "devStart:run": "nodemon dist/server.js",
-    "start": "npx npm:devStart*"
+    "build": "tsc",
+    "start:build": "tsc -w",
+    "start:run": "nodemon dist/server.js",
+    "start": "concurrently npm:start:*"
   },
   "author": "Allwell Agwu-Okoro",
   "license": "ISC",

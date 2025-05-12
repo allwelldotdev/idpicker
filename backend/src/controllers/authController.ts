@@ -1,7 +1,9 @@
-export const login = (req, res) => {
+import { Request, Response } from "express";
+
+export const login = (req: Request, res: Response) => {
   res.json({ message: "Login endpoint" });
 };
 
-export const register = (req, res) => {
+export const register = (req: Request, res: Response) => {
   res.json({ message: "Register endpoint" });
 };
