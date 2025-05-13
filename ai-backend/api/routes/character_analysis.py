@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from api.schema.character_analysis import CharacterAnalysisIn
 
-router = APIRouter("/character-analysis", tags=["character analysis"])
+router = APIRouter(prefix="/character-analysis", tags=["character analysis"])
 
 
 # Process Character Analysis
