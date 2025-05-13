@@ -1,11 +1,20 @@
 import express from "express";
-import { login, register } from "../controllers/authController.js";
+import RouteController from "../utils/RouteController.js";
+import { RouteMetadataKey } from "../utils/metadata.js";
+import AuthLoginController from "../controllers/auth/login.js";
+import AuthRegisterController from "../controllers/auth/register.js";
 
 const router = express.Router();
 const authRouter = express.Router();
 
-authRouter.get("/login", login);
-authRouter.post("/register", register);
+const routeController = new RouteController({
+  route: RouteMetadataKey,
+});
+
+routeController.register(authRouter, [
+  AuthLoginController,
+  AuthRegisterController,
+]);
 
 router.use("/auth", authRouter);
 
