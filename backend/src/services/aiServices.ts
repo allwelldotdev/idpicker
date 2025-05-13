@@ -2,12 +2,22 @@
 Services make HTTP API calls (requests) to FastAPI ai-backend ('ab' for short) API
 */
 
+import { Request } from "express";
 import { axiosAB } from "../utils/aiUtils.js";
 
-// GET ai-backend '/'
+// GET ai-backend root services '/' and '/generate'
 export const abReadRoot = async (): Promise<JSON> => {
   try {
     const response = await axiosAB.get("/");
+    return response.data;
+  } catch (err: any) {
+    throw new Error(`ai-backend server unreachable | ${err.message}`);
+  }
+};
+
+export const abGenerate = async (body: Request): Promise<JSON> => {
+  try {
+    const response = await axiosAB.get("/generate", { data: { ...body } });
     return response.data;
   } catch (err: any) {
     throw new Error(`ai-backend server unreachable | ${err.message}`);
