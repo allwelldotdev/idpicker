@@ -1,0 +1,87 @@
+{
+  "nav.home": "Ana Sayfa",
+  "nav.about": "Hakkımızda",
+  "nav.learn": "Öğren",
+  "nav.pricing": "Fiyatlandırma",
+  "nav.partners": "İş Ortakları",
+  "nav.tryNow": "Şimdi Dene",
+  
+  "hero.badge": "Yapay Zeka Destekli Öğrenme Analizi",
+  "hero.title1": "Beyninin En İyi",
+  "hero.title2": "Çalıştığı Şekilde Öğren",
+  "hero.subtitle": "Benzersiz öğrenme stilinize adapte olan yapay zeka destekli analiz",
+  "hero.getStarted": "Ücretsiz Başla",
+  "hero.howItWorks": "Nasıl Çalışır",
+  
+  "features.personalLearning": "Kişisel Öğrenme Stili",
+  "features.aiDriven": "Yapay Zeka Analizi",
+  "features.smartRecommendations": "Akıllı Öneriler",
+  "features.progressTracking": "İlerleme Takibi",
+  
+  "interactiveFeatures.badge": "İnteraktif Özellikler",
+  "interactiveFeatures.title": "Öğrenme potansiyelinizi ortaya çıkarın",
+  "interactiveFeatures.subtitle": "Platformumuz benzersiz öğrenme stilinize uyum sağlayarak eğitimi daha etkili ve keyifli hale getirir",
+  "interactiveFeatures.learnMore": "Daha fazla bilgi",
+  
+  "features.learningStyle.title": "Öğrenme Stili Analizi",
+  "features.learningStyle.description": "Yapay zekamız, çeşitli boyutlarda nasıl en iyi öğrendiğinizi analiz eder ve benzersiz modelinizi belirler",
+  
+  "features.personalizedPathways.title": "Kişiselleştirilmiş Yollar",
+  "features.personalizedPathways.description": "Güçlü yönlerinize uyum sağlayan ve zayıf yönlerinizi geliştirmenize yardımcı olan özel öğrenme yolculukları",
+  
+  "features.resourceMatching.title": "Kaynak Eşleştirme",
+  "features.resourceMatching.description": "Öğrenme stilinize özel olarak çalışan öğrenme kaynaklarıyla eşleşin",
+  
+  "dashboard.badge": "Güçlü Panel",
+  "dashboard.title": "Öğrenme Yolculuğunuz Tek Bakışta",
+  "dashboard.subtitle": "İlerlemenizi takip edin, desenleri analiz edin ve kişiselleştirilmiş önerileri tek bir yerden alın",
+  "dashboard.nextGen": "Yeni Nesil Panel",
+  "dashboard.journey": "Öğrenme Yolculuğunuz",
+  "dashboard.realtime": "Gerçek Zamanlı Görselleştirme",
+  "dashboard.experience": "Yapay zeka destekli analiz panelimizle ilerlemenizi deneyimleyin, her etkileşim benzersiz öğrenme yolunuzu şekillendirir",
+  "dashboard.features": {
+    "analytics": "Gerçek Zamanlı Analitik",
+    "aiInsights": "Yapay Zeka İçgörüleri",
+    "tracking": "Akıllı İlerleme Takibi",
+    "adaptive": "Adaptif Öğrenme"
+  },
+  "dashboard.aiAssistant": "Yapay Zeka Öğrenme Asistanı",
+  "dashboard.activeSession": "Aktif Oturum",
+  "dashboard.learningProgress": "Öğrenme İlerlemesi",
+  "dashboard.realTimeLabel": "Gerçek Zamanlı",
+  "dashboard.aiInsights": "Yapay Zeka İçgörüleri",
+  
+  "insights.badge": "Yapay Zeka Destekli İçgörüler",
+  "insights.title": "Öğrenme Modelinizi Anlayın",
+  "insights.subtitle": "Öğrenme tercihleriniz hakkında detaylı bilgiler edinin ve çalışma yaklaşımınızı geliştirmek için kişiselleştirilmiş öneriler alın",
+  
+  "insights.learningProfile.title": "Öğrenme Stili Profili",
+  "insights.learningProfile.description": "Görsel, işitsel veya kinestetik - baskın öğrenme stilinizi keşfedin",
+  
+  "insights.progressAnalytics.title": "İlerleme Analitiği",
+  "insights.progressAnalytics.description": "İyileşmenizi takip edin ve gelişim alanlarını belirleyin",
+  
+  "insights.smartRecommendations.title": "Akıllı Öneriler",
+  "insights.smartRecommendations.description": "Öğrenme stilinize uygun yapay zeka destekli çalışma materyalleri edinin",
+  
+  "metrics.activeLearners": "Aktif Öğrenci",
+  "metrics.accuracyRate": "Doğruluk Oranı",
+  "metrics.countriesReached": "Ülkeye Ulaşıldı",
+  
+  "testimonials.title": "Kullanıcılarımız Ne Diyor",
+  "testimonials.subtitle": "Platformumuzun dünyadaki öğrencilerin öğrenme deneyimini nasıl dönüştürdüğünü öğrenin",
+  "testimonials.person1.name": "Ayşe Yılmaz",
+  "testimonials.person1.role": "Mühendislik Öğrencisi",
+  "testimonials.person1.quote": "Bu platform çalışma şeklimi tamamen değiştirdi. Kişiselleştirilmiş öneriler, en iyi öğrenme stilimle mükemmel uyum sağlıyor.",
+  "testimonials.person2.name": "Mehmet Kaya",
+  "testimonials.person2.role": "Tıp Öğrencisi",
+  "testimonials.person2.quote": "Öğrenme stilimin yapay zeka analizi göz açıcıydı. Çalışma verimliliğim önemli ölçüde arttı.",
+  "testimonials.person3.name": "Zeynep Demir",
+  "testimonials.person3.role": "Dil Öğrencisi",
+  "testimonials.person3.quote": "Daha önce birçok öğrenme platformu denedim, ancak bu benzersiz öğrenme tercihlerime gerçekten uyum sağlayan tek platform.",
+  
+  "cta.title": "Öğrenme Deneyiminizi Dönüştürmeye Hazır mısınız?",
+  "cta.highlight": "Bugün Başlayın",
+  "cta.subtitle": "Yapay zeka destekli platformumuzla optimal öğrenme yolunu keşfeden binlerce öğrenciye katılın",
+  "cta.getStarted": "Ücretsiz Başla"
+}

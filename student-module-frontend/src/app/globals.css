@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --card: 222 47% 4%;
+    --card-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --ring: 221 83% 53%;
+  }
+}
+
+@layer utilities {
+  /* Responsive container padding */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive typography */
+  .h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  .h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  .body-text {
+    @apply text-sm sm:text-base;
+  }
+
+  /* Better touch targets on mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+/* Prevent overflow issues on mobile */
+html, body {
+  @apply overflow-x-hidden;
+}
+
+/* Improved mobile scrolling */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better form element display on mobile */
+input, select, textarea {
+  @apply appearance-none;
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+
