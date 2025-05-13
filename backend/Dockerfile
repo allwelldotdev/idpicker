@@ -6,6 +6,11 @@ COPY package*.json ./
 
 RUN npm install
 
+# strictly not needed because mounting local dev volume in docker compose 'volume'
 COPY . .
 
-CMD ["node", "src/server.js"]
+# build TS first to avoid build and serve issues caused by 'tsc -w' and 'nodemon' collision via 'concurrently'
+RUN npm run build
+
+# for production because docker compose 'command' overrides this
+CMD ["node", "dist/server.js"]
