@@ -2,11 +2,13 @@
   "name": "idpicker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sameerun2.github.io/student-module-frontend",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && next export && touch out/.nojekyll"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
