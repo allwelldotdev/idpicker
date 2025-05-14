@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "features": "Features",
+    "contact": "Contact",
+    "tryNow": "Try Now",
+    "learn": "Learn",
+    "pricing": "Pricing",
+    "partners": "Partners"
+  },
+  "hero": {
+    "title1": "Unlock Your Learning",
+    "title2": "Potential with AI",
+    "subtitle": "Experience a revolutionary approach to education through advanced AI analysis and personalized learning paths tailored to your unique style",
+    "getStarted": "Start Your Journey",
+    "howItWorks": "See How It Works"
+  },
+  "demo": {
+    "title": "Adaptive Learning Experience",
+    "subtitle": "Watch your learning style evolve in real-time",
+    "quiz": {
+      "title": "Personal Learning Assessment",
+      "questions": [
+        "How do you prefer to process new information?",
+        "What learning environment works best for you?",
+        "How do you organize study materials?"
+      ]
+    },
+    "video": {
+      "title": "AI Analysis Demo",
+      "description": "See how our AI analyzes your learning patterns"
+    },
+    "results": {
+      "title": "Your Learning Profile",
+      "categories": [
+        "Visual Learning: 85%",
+        "Interactive Engagement: 92%",
+        "Cognitive Processing: 88%"
+      ]
+    }
+  },
+  "features": {
+    "personalLearning": "Adaptive Learning Paths",
+    "aiDriven": "Real-time AI Analysis",
+    "smartRecommendations": "Intelligent Content Matching",
+    "progressTracking": "Advanced Progress Analytics",
+    "learningStyle": {
+      "title": "Learning Style Analysis",
+      "description": "Our AI analyzes how you learn best across multiple dimensions, identifying your unique pattern"
+    },
+    "personalizedPathways": {
+      "title": "Personalized Pathways",
+      "description": "Custom learning journeys that adapt to your strengths and help improve your weaknesses"
+    },
+    "resourceMatching": {
+      "title": "Resource Matching",
+      "description": "Get matched with learning resources that specifically work for your learning style"
+    }
+  },
+  "interactiveFeatures": {
+    "badge": "Interactive Features",
+    "title": "Unlock your learning potential",
+    "subtitle": "Our platform adapts to your unique learning style, making education more effective and enjoyable",
+    "learnMore": "Learn more"
+  },
+  "dashboard": {
+    "badge": "Powerful Dashboard",
+    "title": "Your Learning Journey at a Glance",
+    "subtitle": "Track your progress, analyze patterns, and get personalized recommendations all in one place",
+    "nextGen": "Next-Gen Dashboard",
+    "journey": "Your Learning Journey",
+    "realtime": "Visualized in Real-time",
+    "experience": "Experience your progress through our AI-powered analytics dashboard, where every interaction shapes your unique learning path",
+    "features": {
+      "analytics": "Real-time Analytics",
+      "aiInsights": "AI Insights",
+      "tracking": "Smart Progress Tracking",
+      "adaptive": "Adaptive Learning"
+    },
+    "aiAssistant": "AI Learning Assistant",
+    "activeSession": "Active Session",
+    "learningProgress": "Learning Progress",
+    "realTimeLabel": "Real-time",
+    "aiInsights": "AI Insights"
+  },
+  "insights": {
+    "badge": "AI-Powered Insights",
+    "title": "Understand Your Learning Pattern",
+    "subtitle": "Get detailed insights about your learning preferences and receive personalized recommendations to enhance your study approach",
+    "learningProfile": {
+      "title": "Learning Style Profile",
+      "description": "Visual, auditory, or kinesthetic - discover your dominant learning style"
+    },
+    "progressAnalytics": {
+      "title": "Progress Analytics",
+      "description": "Track your improvement and identify areas for growth"
+    },
+    "smartRecommendations": {
+      "title": "Smart Recommendations",
+      "description": "Get AI-curated study materials that match your learning style"
+    }
+  },
+  "metrics": {
+    "activeLearners": "Active Learners",
+    "accuracyRate": "Accuracy Rate",
+    "countriesReached": "Countries Reached"
+  },
+  "testimonials": {
+    "title": "What Our Users Say",
+    "subtitle": "Learn how our platform has transformed the learning experience for students across the globe",
+    "person1": {
+      "name": "Sarah Johnson",
+      "role": "Engineering Student",
+      "quote": "This platform completely changed how I study. The personalized recommendations match perfectly with how I learn best."
+    },
+    "person2": {
+      "name": "David Chen",
+      "role": "Medical Student",
+      "quote": "The AI analysis of my learning style was eye-opening. My study efficiency has improved dramatically."
+    },
+    "person3": {
+      "name": "Maria Rodriguez",
+      "role": "Language Learner",
+      "quote": "I've tried many learning platforms before, but this is the only one that truly adapts to my unique learning preferences."
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Learning Experience?",
+    "highlight": "Start Today",
+    "subtitle": "Join thousands of students discovering their optimal learning path with our AI-powered platform",
+    "getStarted": "Get Started Free"
+  }
+}

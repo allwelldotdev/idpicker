@@ -8,15 +8,15 @@ import Image from 'next/image'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { navigation } from '@/config/navigation'
-import { useLanguage } from '@/context/LanguageContext'
-import { LanguageSwitcher } from '@/components/ui/language-switcher'
+import { useLanguage } from '@/lib/context/LanguageContext'
+import { LanguageSwitcher } from '@/components/ui/language-switcher';
 
 export function Navigation() {
   const router = useRouter()
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t } = useLanguage()
+  const { t, language, setLanguage } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,91 +36,92 @@ export function Navigation() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-background/90 backdrop-blur-md shadow-md" : "bg-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        isScrolled 
+          ? "bg-background/85 backdrop-blur-xl shadow-lg border-b border-border/20" 
+          : "bg-transparent"
       )}
     >
       <nav className="w-full max-w-7xl mx-auto">
-        <div className="flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4">
+        <div className="flex items-center justify-between px-6 sm:px-8 py-4">
           {/* Logo Section */}
-          <motion.div 
+            <motion.div 
             className="flex shrink-0"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
+            >
             <Link href="/" aria-label="Go to homepage">
               <Image
-                src="/images/logos/Logo/svg/logo-black.svg"
-                alt="idpicker logo"
-                width={120}
-                height={32}
-                className="h-7 w-auto sm:h-9 md:h-10 lg:h-11"
-                priority
+              src="/images/logos/Logo/svg/logo-black.svg"
+              alt="idpicker logo"
+              width={200}
+              height={42}
+              className="h-7 w-auto sm:h-9 md:h-12 lg:h-11"
+              priority
               />
             </Link>
-          </motion.div>
+            </motion.div>
 
-          {/* Navigation Links & CTA Button */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-center ml-5 lg:ml-10">
-              <div className="flex items-center space-x-4 sm:space-x-5 lg:space-x-7 xl:space-x-9">
-                {navigation.map((item) => (
+            <div className="hidden md:flex items-center space-x-1">
+              {navigation.map((item) => (
+                <motion.div
+                  key={item.name}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
                   <Link
-                    key={item.name}
                     href={item.href}
                     className={cn(
-                      "text-text-secondary hover:text-primary transition-colors relative group text-sm sm:text-base xl:text-lg font-medium whitespace-nowrap",
-                      pathname === item.href ? "text-primary" : ""
+                      "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                      pathname === item.href 
+                        ? "text-primary bg-primary/10" 
+                        : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                     )}
                   >
                     {t(`nav.${item.name.toLowerCase()}`)}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary/30 group-hover:w-full transition-all duration-300" />
                   </Link>
-                ))}
-              </div>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Language Switcher */}
-            <div className="ml-2 md:ml-4">
+            <div className="hidden md:flex items-center gap-3">
+              {/* Language Switcher - Moved next to CTA */}
               <LanguageSwitcher />
-            </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center justify-end ml-5 lg:ml-10">
+              {/* CTA Button */}
               <motion.button 
                 onClick={handleTryNow}
                 whileHover={{ scale: 1.05 }} 
                 whileTap={{ scale: 0.95 }}
-                className="group bg-gradient-to-r from-primary via-primary/90 to-accent text-white px-4 py-2 sm:px-5 lg:px-7 lg:py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 lg:gap-3 text-sm sm:text-base font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 whitespace-nowrap"
+                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-6 py-2.5 rounded-full font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
               >
                 {t('nav.tryNow')}
-                <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={16} />
+                <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={18} />
               </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden ml-5">
-              <button
-                className="p-3 text-muted-foreground hover:text-foreground rounded-lg touch-manipulation"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              className="md:hidden p-2 rounded-full hover:bg-accent/10"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu with updated styling */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0, y: -10 }}
-              animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden mt-2 py-2 px-1 border-t border-border overflow-hidden rounded-md shadow-md bg-background/90 dark:bg-background/80 backdrop-blur-md"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden border-t border-border/10 bg-background/95 backdrop-blur-lg"
             >
               <motion.div 
                 initial={{ opacity: 0 }}

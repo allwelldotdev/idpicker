@@ -1,63 +1,63 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { useLanguage } from '@/context/LanguageContext'
-import { motion } from 'framer-motion'
-import { Check, Globe } from 'lucide-react'
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem,
-  DropdownMenuTrigger 
-} from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
-
-const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-]
+import { useLanguage } from '@/lib/context/LanguageContext';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Globe } from 'lucide-react';
+import { useState } from 'react';
 
 export function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage()
-  const [isOpen, setIsOpen] = useState(false)
-  
+  const { language, setLanguage } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-      <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="h-9 w-9 p-0 rounded-full"
-          aria-label="Switch language"
-        >
-          <Globe className="h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
-        {languages.map((lang) => (
-          <DropdownMenuItem
-            key={lang.code}
-            className="flex items-center justify-between cursor-pointer"
-            onClick={() => {
-              setLanguage(lang.code as 'en' | 'tr')
-              setIsOpen(false)
-            }}
-          >
-            <span className="flex items-center gap-2">
-              <span>{lang.flag}</span>
-              {lang.name}
-            </span>
-            {language === lang.code && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-              >
-                <Check className="h-4 w-4" />
-              </motion.div>
-            )}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+    <div className="relative">
+      <motion.button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-accent/10 hover:bg-accent/20 transition-all duration-300"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <Globe size={18} className="text-primary" />
+        <span className="text-sm font-medium">
+          {language.toUpperCase()}
+        </span>
+      </motion.button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute right-0 mt-2 z-50 py-1 bg-background/95 backdrop-blur-sm border border-border/50 rounded-lg shadow-lg min-w-[120px]"
+            >
+              {['en', 'tr'].map((lang) => (
+                <motion.button
+                  key={lang}
+                  onClick={() => {
+                    setLanguage(lang);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full px-4 py-2 text-sm text-left transition-colors
+                    ${language === lang ? 'text-primary font-medium bg-accent/10' : 'hover:bg-accent/5'}
+                  `}
+                  whileHover={{ x: 2 }}
+                >
+                  {lang === 'en' ? 'English' : 'Türkçe'}
+                </motion.button>
+              ))}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }

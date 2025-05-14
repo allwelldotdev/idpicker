@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { LanguageProvider } from "@/context/LanguageContext"
+import { LanguageProvider } from "@/lib/context/LanguageContext"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

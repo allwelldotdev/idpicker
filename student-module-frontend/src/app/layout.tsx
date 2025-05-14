@@ -3,6 +3,7 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 import { Providers } from "@/components/providers"
 import AuthGate from "@/components/auth/AuthGate"
+import { LanguageProvider } from '@/lib/context/LanguageContext'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -11,7 +12,7 @@ export const metadata = {
   description: "AI-powered learning style analysis and educational path recommendation",
 }
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -21,10 +22,14 @@ export default function RootLayout({
       <body className={cn(inter.className, "min-h-screen bg-background antialiased")}>
         <Providers>
           <AuthGate>
-            {children}
+            <LanguageProvider>
+              {children}
+            </LanguageProvider>
           </AuthGate>
         </Providers>
       </body>
     </html>
-  )
+  );
 }
+
+export default RootLayout;

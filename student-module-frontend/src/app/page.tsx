@@ -1,18 +1,15 @@
 "use client"
-
+import React from 'react';
 import { useRouter } from 'next/navigation'
 import { Footer } from '@/components/layout/Footer'
 import { Navigation } from '@/components/layout/Navigation'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { useLanguage } from '@/context/LanguageContext'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useLanguage } from '@/lib/context/LanguageContext'
 import { 
-  Sparkles, 
   Brain, 
   Target, 
   Blocks, 
   ChevronRight, 
-  Check, 
   Play,
   ArrowRight,  
   Bot,
@@ -22,116 +19,176 @@ import {
 } from 'lucide-react'
 import { BackgroundLines } from '@/components/ui/background-lines'
 import { CookieConsent } from '@/components/ui/cookie-consent'
+import dynamic from 'next/dynamic'
 
-const Home: React.FC = () => {
+// Dynamic import for React Three Fiber components to avoid SSR issues
+const Scene = dynamic(() => import('@/components/3d/Scene'), { 
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+  )
+})
+
+const Home = () => {
   const router = useRouter()
   const { t } = useLanguage()
+  const { scrollY } = useScroll()
+  const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   return (
     <div className="flex flex-col bg-background text-foreground min-h-screen">
       <Navigation />
       
       {/* Hero Section */}
-      <BackgroundLines className="min-h-screen" svgOptions={{ duration: 25 }}> 
-        <section className="relative pt-32 pb-20 md:pb-32">
-          
-          {/* Background Effects - Reduced opacity to make background lines more visible */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-grid-white/[0.01] mask-radial-faded" />
-            <div className="absolute h-full w-full">
-              <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-[120px] opacity-30 animate-pulse" />
-              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full filter blur-[120px] opacity-30 animate-pulse animation-delay-1000" />
-            </div>
-          </div>
+      <div className="relative min-h-screen">
+        {/* 3D Background Effect */}
+        <div className="absolute inset-0 -z-10">
+          <Scene />
+        </div>
 
-          {/* Main Hero Content - rest unchanged */}
-          <div className="container mx-auto relative z-10">
-            <div className="flex flex-col items-center max-w-6xl mx-auto">
-              {/* Hero Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-gradient-to-r from-primary/10 via-accent/10 to-purple-500/10 rounded-full p-1 mb-8"
-              >
-                <div className="bg-background/50 backdrop-blur-sm px-4 py-1 rounded-full flex items-center gap-2">
-                  <Bot size={14} className="text-primary animate-pulse" />
-                  <span className="text-sm font-medium">{t('hero.badge')}</span>
-                </div>
-              </motion.div>
-
-              {/* Hero Title */}
-              <div className="w-full flex flex-col items-center gap-8">
-                <motion.h1 
-                  className="text-6xl md:text-8xl font-bold text-center mix-blend-overlay"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <span className="relative z-10 bg-clip-text">{t('hero.title1')}</span> 
-                  <br />
-                  <span className="relative z-10 text-primary">{t('hero.title2')}</span>
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-xl md:text-2xl text-center text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-                >
-                  {t('hero.subtitle')}
-                </motion.p>
-              </div>
-
-              {/* Rest of the hero section (CTA buttons, etc.) */}
-              {/* CTA Buttons */}
-              <motion.div className="flex flex-wrap justify-center gap-4 mt-12">
-                <motion.button
-                  onClick={() => router.push('/login')}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group bg-gradient-to-r from-primary via-accent to-purple-500 text-white px-8 py-4 rounded-xl flex items-center gap-2 font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-                >
-                  {t('hero.getStarted')}
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-                <motion.button
-                  onClick={() => router.push('/construction')}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 rounded-xl border hover:bg-white/5 transition-all flex items-center gap-2 font-medium"
-                >
-                  {t('hero.howItWorks')}
-                  <div className="h-6 w-6 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="h-3 w-3 text-white ml-0.5" />
-                  </div>
-                </motion.button>
-              </motion.div>
-
-              {/* Feature Grid */}
+        {/* Rest of your existing hero section code */}
+        <BackgroundLines className="min-h-screen" svgOptions={{ duration: 25 }}> 
+          <section className="relative pt-32 pb-20 md:pb-32">
+            {/* Enhanced Gradient Effects */}
+            <div className="absolute inset-0 -z-10">
+              <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-background to-background opacity-80" />
               <motion.div 
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 max-w-4xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                style={{ opacity }}
+                className="absolute inset-0"
               >
-                {[
-                  { icon: <PenTool className="h-5 w-5" />, text: 'features.personalLearning' },
-                  { icon: <Bot className="h-5 w-5" />, text: 'features.aiDriven' },
-                  { icon: <Lightbulb className="h-5 w-5" />, text: 'features.smartRecommendations' },
-                  { icon: <TrendingUp className="h-5 w-5" />, text: 'features.progressTracking' },
-                ].map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-                    <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary">
-                      {feature.icon}
-                    </div>
-                    <span className="text-sm font-medium">{t(feature.text)}</span>
-                  </div>
+                {[...Array(20)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute h-2 w-2 bg-primary/30 rounded-full"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                    }}
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.3, 0.8, 0.3],
+                    }}
+                    transition={{
+                      duration: 2 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2,
+                    }}
+                  />
                 ))}
               </motion.div>
             </div>
-          </div>
-        </section>
-      </BackgroundLines>
+
+            <div className="container mx-auto relative z-10">
+              <motion.div 
+                className="flex flex-col items-center max-w-6xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+
+
+                {/* Enhanced Hero Title with Professional Styling */}
+                <motion.div className="flex flex-col items-center space-y-6">
+                  <motion.span
+                    // className="text-sm md:text-base font-medium px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary/80 backdrop-blur-sm"
+                    // initial={{ opacity: 0, y: -20 }}
+                    // animate={{ opacity: 1, y: 0 }}
+                    // transition={{ duration: 0.5 }}
+                  >
+                  </motion.span>
+
+                  <motion.h1 
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold text-center tracking-tight leading-tight"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                  >
+                    <motion.span 
+                      className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-purple-500"
+                      whileHover={{
+                        scale: 1.02,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {t('hero.title1')}
+                    </motion.span>
+                    <br />
+                    <motion.span 
+                      className="relative inline-block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-purple-500"
+                    >
+                      {t('hero.title2')}
+                    </motion.span>
+                  </motion.h1>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="text-lg md:text-xl lg:text-2xl text-center text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed font-medium"
+                  >
+                    {t('hero.subtitle')}
+                  </motion.p>
+                </motion.div>
+
+                {/* Enhanced CTA Buttons */}
+                <motion.div 
+                  className="flex flex-wrap justify-center gap-6 mt-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  <motion.button
+                    onClick={() => router.push('/login')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative px-8 py-4 rounded-xl overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-purple-500 opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative z-10 flex items-center gap-2 text-white font-medium">
+                      {t('hero.getStarted')}
+                      <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </motion.button>
+                  <motion.button
+                    onClick={() => router.push('/construction')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group px-8 py-4 rounded-xl border hover:bg-white/5 transition-all flex items-center gap-2 font-medium"
+                  >
+                    {t('hero.howItWorks')}
+                    <div className="h-6 w-6 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="h-3 w-3 text-white ml-0.5" />
+                    </div>
+                  </motion.button>
+                </motion.div>
+
+                {/* Feature Grid */}
+                <motion.div 
+                  className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 max-w-4xl mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  {[
+                    { icon: <PenTool className="h-5 w-5" />, text: 'features.personalLearning' },
+                    { icon: <Bot className="h-5 w-5" />, text: 'features.aiDriven' },
+                    { icon: <Lightbulb className="h-5 w-5" />, text: 'features.smartRecommendations' },
+                    { icon: <TrendingUp className="h-5 w-5" />, text: 'features.progressTracking' },
+                  ].map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-primary">
+                        {feature.icon}
+                      </div>
+                      <span className="text-sm font-medium">{t(feature.text)}</span>
+                    </div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
+        </BackgroundLines>
+      </div>
 
       {/* Interactive Feature Section */}
       <section id="features" className="py-24 relative bg-gradient-to-b from-background via-background/95 to-background">
@@ -411,6 +468,114 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* New Interactive Features Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* AI Analysis Process Visualization */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                icon: <Brain className="h-8 w-8" />,
+                title: t('features.personality.title'),
+                description: t('features.personality.description'),
+                color: "from-blue-500 to-primary"
+              },
+              {
+                icon: <Target className="h-8 w-8" />,
+                title: t('features.career.title'),
+                description: t('features.career.description'),
+                color: "from-primary to-accent"
+              },
+              {
+                icon: <Blocks className="h-8 w-8" />,
+                title: t('features.roadmap.title'),
+                description: t('features.roadmap.description'),
+                color: "from-accent to-purple-500"
+              }
+            ].map((feature, idx) => (
+              <div 
+                key={idx}
+                className="relative group p-8 rounded-2xl overflow-hidden"
+              >
+                {/* Interactive Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
+                <div className="relative z-10">
+                  <div className="mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Interactive Demo Section */}
+          <motion.div 
+            className="mt-24 relative rounded-3xl overflow-hidden border bg-black/20 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="p-8">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Bot className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold">{t('demo.title')}</h4>
+                  <p className="text-muted-foreground">{t('demo.subtitle')}</p>
+                </div>
+              </div>
+
+              {/* Interactive Character Analysis Demo */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  {/* Quiz Preview */}
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <h5 className="font-medium mb-4">{t('demo.quiz.title')}</h5>
+                    {[1, 2, 3].map((q) => (
+                      <div key={q} className="flex items-center gap-3 mb-3">
+                        <div className="h-4 w-4 rounded-full border border-primary/50" />
+                        <div className="h-2 bg-white/10 rounded-full flex-1" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Video Analysis Preview */}
+                  <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                    <h5 className="font-medium mb-4">{t('demo.video.title')}</h5>
+                    <div className="aspect-video rounded-lg bg-black/40 flex items-center justify-center">
+                      <Play className="h-8 w-8 text-primary/50" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Results Preview */}
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                  <h5 className="font-medium mb-4">{t('demo.results.title')}</h5>
+                  <div className="space-y-4">
+                    {[1, 2, 3].map((r) => (
+                      <motion.div 
+                        key={r}
+                        className="h-8 bg-primary/10 rounded-lg"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: r * 0.2 }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Dashboard Preview Section */}
       <section className="py-24 relative bg-gradient-to-b from-background/80 via-background/40 to-background">
         {/* Holographic Grid Background */}
@@ -515,7 +680,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-3xl overflow-hidden border bg-card/50 backdrop-blur-sm"
+            // className="relative rounded-3xl overflow-hidden border bg-card/50 backdrop-blur-sm"
           >
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-accent/5 to-background/5" />
@@ -542,113 +707,8 @@ const Home: React.FC = () => {
               ))}
             </div>
 
-            <div className="p-2">
-              <div className="aspect-[16/9] rounded-2xl relative overflow-hidden backdrop-blur-sm border border-white/10">
-                {/* AI Interface Elements */}
-                <div className="absolute inset-0 flex flex-col p-6">
-                  {/* Top Bar */}
-                  <div className="flex items-center justify-between mb-8">
-                    <motion.div 
-                      className="flex items-center gap-4"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <Brain className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-sm text-muted-foreground">{t('dashboard.aiAssistant')}</span>
-                        <span className="text-lg font-semibold">{t('dashboard.activeSession')}</span>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="flex items-center gap-2"
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                    >
-                      {[...Array(3)].map((_, i) => (
-                        <div 
-                          key={i}
-                          className="h-2 w-2 rounded-full bg-primary animate-pulse"
-                          style={{ animationDelay: `${i * 0.2}s` }}
-                        />
-                      ))}
-                    </motion.div>
-                  </div>
 
-                  {/* Main Content */}
-                  <div className="grid grid-cols-3 gap-6 flex-1">
-                    {/* Learning Progress */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="col-span-2 rounded-xl bg-black/20 border border-white/10 p-4"
-                    >
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-sm font-medium">{t('dashboard.learningProgress')}</h3>
-                        <div className="flex items-center gap-2 text-xs text-primary">
-                          <span>{t('dashboard.realTimeLabel')}</span>
-                          <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                        </div>
-                      </div>
-                      
-                      {/* Activity Graph */}
-                      <div className="h-40 relative">
-                        <svg className="w-full h-full" viewBox="0 0 100 40">
-                          <motion.path
-                            d="M0,20 Q25,5 50,20 T100,20"
-                            fill="none"
-                            stroke="url(#progressGradient)"
-                            strokeWidth="2"
-                            initial={{ pathLength: 0 }}
-                            whileInView={{ pathLength: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 2 }}
-                          />
-                          <defs>
-                            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                              <stop offset="0%" stopColor="var(--primary)" />
-                              <stop offset="100%" stopColor="var(--accent)" />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-                    </motion.div>
-
-                    {/* AI Insights */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 }}
-                      className="rounded-xl bg-black/20 border border-white/10 p-4"
-                    >
-                      <h3 className="text-sm font-medium mb-4">{t('dashboard.aiInsights')}</h3>
-                      {[...Array(3)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                          className="flex items-center gap-2 mb-3"
-                        >
-                          <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <div className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                          </div>
-                          <div className="h-2 bg-primary/20 rounded-full flex-1" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
         </div>
       </section>
 
@@ -808,7 +868,7 @@ const Home: React.FC = () => {
       <Footer />
       <CookieConsent />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

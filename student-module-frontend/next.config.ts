@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
     // During development you can enable this for faster builds
     // But for production, we want to catch type errors
     ignoreBuildErrors: false,
+  },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+    config.module.rules.push({
+      test: /\.json$/,
+      type: 'json',
+    });
+    return config;
   }
 };
 

@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "features": "Özellikler",
+    "contact": "İletişim",
+    "tryNow": "Hemen Dene"
+  },
+  "hero": {
+    "badge": "Yapay Zeka Destekli Öğrenme",
+    "title1": "Öğrenme Stilinizi",
+    "title2": "Keşfedin",
+    "subtitle": "Yapay zeka ile kişiselleştirilmiş öğrenme yolları",
+    "getStarted": "Başlayın",
+    "howItWorks": "Nasıl Çalışır"
+  },
+  "features": {
+    "personalLearning": "Kişisel Öğrenme Stili",
+    "aiDriven": "Yapay Zeka Analizi",
+    "smartRecommendations": "Akıllı Öneriler",
+    "progressTracking": "İlerleme Takibi",
+    "learningStyle": {
+      "title": "Öğrenme Stili Analizi",
+      "description": "Yapay zekamız, çok boyutlu öğrenme stilinizi analiz eder ve benzersiz modelinizi belirler"
+    },
+    "personalizedPathways": {
+      "title": "Kişiselleştirilmiş Yollar",
+      "description": "Güçlü yanlarınıza uyum sağlayan ve zayıf yönlerinizi geliştirmenize yardımcı olan özel öğrenme yolculukları"
+    },
+    "resourceMatching": {
+      "title": "Kaynak Eşleştirme",
+      "description": "Öğrenme stilinize özel olarak çalışan öğrenme kaynaklarıyla eşleşin"
+    }
+  },
+  "interactiveFeatures": {
+    "badge": "Etkileşimli Özellikler",
+    "title": "Öğrenme potansiyelinizi ortaya çıkarın",
+    "subtitle": "Platformumuz, benzersiz öğrenme stilinize uyum sağlayarak eğitimi daha etkili ve keyifli hale getirir",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "dashboard": {
+    "badge": "Güçlü Gösterge Paneli",
+    "title": "Öğrenme Yolculuğunuz Tek Bakışta",
+    "subtitle": "İlerlemenizi takip edin, desenleri analiz edin ve kişiselleştirilmiş öneriler alın",
+    "nextGen": "Yeni Nesil Panel",
+    "journey": "Öğrenme Yolculuğunuz",
+    "realtime": "Gerçek Zamanlı Görselleştirme",
+    "experience": "Her etkileşimin benzersiz öğrenme yolunuzu şekillendirdiği yapay zeka destekli analiz paneliyle ilerlemenizi deneyimleyin",
+    "features": {
+      "analytics": "Gerçek Zamanlı Analiz",
+      "aiInsights": "Yapay Zeka İçgörüleri",
+      "tracking": "Akıllı İlerleme Takibi",
+      "adaptive": "Adaptif Öğrenme"
+    },
+    "aiAssistant": "Yapay Zeka Öğrenme Asistanı",
+    "activeSession": "Aktif Oturum",
+    "learningProgress": "Öğrenme İlerlemesi",
+    "realTimeLabel": "Gerçek Zamanlı",
+    "aiInsights": "Yapay Zeka İçgörüleri"
+  },
+  "metrics": {
+    "activeLearners": "Aktif Öğrenci",
+    "accuracyRate": "Başarı Oranı",
+    "countriesReached": "Ulaşılan Ülke"
+  },
+  "testimonials": {
+    "title": "Kullanıcılarımız Ne Diyor",
+    "subtitle": "Platformumuzun öğrencilerin öğrenme deneyimini nasıl dönüştürdüğünü öğrenin",
+    "person1": {
+      "name": "Ayşe Yılmaz",
+      "role": "Mühendislik Öğrencisi",
+      "quote": "Bu platform çalışma şeklimi tamamen değiştirdi. Kişiselleştirilmiş öneriler öğrenme stilime mükemmel uyum sağlıyor."
+    },
+    "person2": {
+      "name": "Mehmet Demir",
+      "role": "Tıp Öğrencisi",
+      "quote": "Öğrenme stilimin yapay zeka analizi göz açıcıydı. Çalışma verimliliğim önemli ölçüde arttı."
+    },
+    "person3": {
+      "name": "Zeynep Kaya",
+      "role": "Dil Öğrencisi",
+      "quote": "Daha önce birçok öğrenme platformu denedim, ancak bu platform benzersiz öğrenme tercihlerime gerçekten uyum sağlayan tek platform."
+    }
+  },
+  "cta": {
+    "title": "Öğrenme Deneyiminizi Dönüştürmeye Hazır mısınız?",
+    "highlight": "Hemen Başlayın",
+    "subtitle": "Yapay zeka destekli platformumuzla optimal öğrenme yollarını keşfeden binlerce öğrenciye katılın",
+    "getStarted": "Ücretsiz Başla"
+  }
+}
