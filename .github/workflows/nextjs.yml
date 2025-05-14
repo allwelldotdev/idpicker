@@ -10,35 +10,41 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: student-module-frontend
+        
     steps:
       - uses: actions/checkout@v3
         with:
-          sparse-checkout: |
-            student-module-frontend
-          sparse-checkout-cone-mode: false
-      
+          ref: frontend
+          
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "18.17.0"
           cache: 'npm'
-          cache-dependency-path: './student-module-frontend/package-lock.json'
+          cache-dependency-path: student-module-frontend/package-lock.json
       
       - name: Install dependencies
-        working-directory: ./student-module-frontend
-        run: npm install
+        run: npm ci
         
-      - name: Build
-        working-directory: ./student-module-frontend
-        run: npm run build
+      - name: Build and Export
+        run: |
+          npm run build
+          touch out/.nojekyll
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./student-module-frontend/out
+          path: student-module-frontend/out
 
   deploy:
     environment:
