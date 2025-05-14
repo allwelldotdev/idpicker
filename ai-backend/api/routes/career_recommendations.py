@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from api.schema.career_recommendations import CareerRecommendationsIn
 
-router = APIRouter("/career-recommendations", tags=["career recommendations"])
+router = APIRouter(prefix="/career-recommendations", tags=["career recommendations"])
 
 
 # Process Character Analysis
