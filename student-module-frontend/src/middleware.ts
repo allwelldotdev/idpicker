@@ -1,48 +1,75 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { publicRoutes, type PublicRoute } from './types/routes'
 
-// List of supported locales
 const locales = ['en', 'tr']
 const defaultLocale = 'en'
 
-function getLocale(request: NextRequest) {
-  // Check for locale in cookie
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value
-  if (cookieLocale && locales.includes(cookieLocale)) {
-    return cookieLocale
+function getLocale(request: NextRequest): string {
+  // Get accept-language header
+  const acceptLanguage = request.headers.get('accept-language') ?? defaultLocale
+  const languages = acceptLanguage.split(',').map((lang) => lang.split(';')[0].trim())
+
+  const savedLocale = request.cookies.get('NEXT_LOCALE')?.value
+
+  // First check saved locale
+  if (savedLocale && locales.includes(savedLocale)) {
+    return savedLocale
   }
 
-  // Check Accept-Language header
-  const acceptLanguage = request.headers.get('accept-language')
-  if (acceptLanguage) {
-    const preferredLocale = acceptLanguage
-      .split(',')
-      .map(lang => lang.split(';')[0])
-      .find(lang => locales.includes(lang))
-    if (preferredLocale) {
-      return preferredLocale
+  // Then check if any of the browser's preferred languages match our locales
+  for (const language of languages) {
+    const locale = language.split('-')[0] // Handle cases like 'en-US'
+    if (locales.includes(locale)) {
+      return locale
     }
   }
 
   return defaultLocale
 }
 
+function isPublicRoute(path: string): path is PublicRoute {
+  return publicRoutes.includes(path as PublicRoute)
+}
+
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  const locale = getLocale(request)
-  
-  // Skip if pathname starts with /api, /_next, /static, etc.
+  const pathname = request.nextUrl.pathname
+
+  // Skip middleware for static files and api routes
   if (
-    /^\/(?!api|_next|.*\..*)/.test(pathname)
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/static') ||
+    pathname.includes('.')
   ) {
-    const response = NextResponse.next()
-    response.cookies.set('NEXT_LOCALE', locale)
-    return response
+    return NextResponse.next()
+  }
+
+  // Check if pathname starts with a locale
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  )
+
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request)
+
+    // For public routes, don't add locale prefix
+    if (isPublicRoute(pathname)) {
+      return NextResponse.next()
+    }
+
+    // Redirect to locale prefixed path
+    return NextResponse.redirect(
+      new URL(`/${locale}${pathname}`, request.url)
+    )
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    // Skip all internal paths (_next, api, images)
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 }
