@@ -11,7 +11,7 @@ from langchain_openai import ChatOpenAI
 from api.schema.generate import GenerateAIResponse
 from config import config
 
-llm = ChatOpenAI(model="gpt-4.1", api_key=config.OPENAI_API_KEY)
+llm = ChatOpenAI(model=config.OPENAI_MODEL, api_key=config.OPENAI_API_KEY)
 
 structured_llm: Runnable[dict, GenerateAIResponse] = llm.with_structured_output(
     GenerateAIResponse
