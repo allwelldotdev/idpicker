@@ -46,7 +46,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('language', lang)
   }
 
-  // Enhanced translation function to handle nested objects
   const t = (key: string): string => {
     try {
       const keys = key.split('.')
