@@ -40,10 +40,10 @@ yarn-error.log*
 # allow example env file and production env (without secrets)
 !.env.example
 !.env.production
+!yarn.lock
 
 # vercel
 .vercel
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+
