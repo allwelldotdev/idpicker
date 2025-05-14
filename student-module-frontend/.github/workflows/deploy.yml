@@ -6,17 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./student-module-frontend
     steps:
       # Checkout code
       - uses: actions/checkout@v3
@@ -28,10 +27,6 @@ jobs:
           node-version: "18.17.0"
           cache: 'npm'
           
-      # Setup Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-        
       # Install dependencies
       - name: Install dependencies
         run: npm install
@@ -44,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./out
+          path: ./student-module-frontend/out
 
   deploy:
     environment:

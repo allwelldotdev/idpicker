@@ -5,10 +5,10 @@
   "homepage": "https://sameerun2.github.io/student-module-frontend",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && next export && touch out/.nojekyll"
+    "export": "next build && next export"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
