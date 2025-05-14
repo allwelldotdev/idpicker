@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18.17.0"
+          cache: 'npm'
           
       # Setup Pages
       - name: Setup Pages
@@ -33,11 +34,11 @@ jobs:
         
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         
       # Build the project
       - name: Build
-        run: npm run deploy
+        run: npm run build
         
       # Upload build artifacts for deployment
       - name: Upload artifact
