@@ -32,7 +32,7 @@ yarn-error.log*
 
 # env files - only exclude sensitive ones
 .env
-.env.local
+# .env.local
 .env.development.local
 .env.test.local
 .env.production.local

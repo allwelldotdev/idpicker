@@ -6,8 +6,9 @@ export function Footer() {
     <footer className="bg-background/95 border-t border-border/20 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-          <div>
+            <div>
             <div className="mb-6">
+              <Link href="/">
               <Image
                 src="/images/logos/Logo/svg/logo-black.svg"
                 alt="idpicker logo"
@@ -16,6 +17,7 @@ export function Footer() {
                 className="h-14 w-auto"
                 priority
               />
+              </Link>
             </div>
             <p className="text-muted-foreground mb-6">
               AI-powered learning style analysis to help you discover how your brain works best.

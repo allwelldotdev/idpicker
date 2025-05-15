@@ -45,71 +45,58 @@ export function Navigation() {
       <nav className="w-full max-w-7xl mx-auto">
         <div className="flex items-center justify-between px-6 sm:px-8 py-4">
           {/* Logo Section */}
-            <motion.div 
-            className="flex shrink-0"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
+          <div className="flex shrink-0">
             <Link href="/" aria-label="Go to homepage">
               <Image
-              src="/images/logos/Logo/svg/logo-black.svg"
-              alt="idpicker logo"
-              width={200}
-              height={42}
-              className="h-7 w-auto sm:h-9 md:h-12 lg:h-11"
-              priority
+                src="/images/logos/Logo/svg/logo-black.svg"
+                alt="idpicker logo"
+                width={200}
+                height={42}
+                className="h-7 w-auto sm:h-9 md:h-12 lg:h-11"
+                priority
               />
             </Link>
-            </motion.div>
+          </div>
 
           <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {navigation.map((item) => (
-                <motion.div
+                <Link
                   key={item.name}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  href={item.href}
+                  className={cn(
+                    "relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300",
+                    pathname === item.href 
+                      ? "text-primary bg-primary/10" 
+                      : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                  )}
                 >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
-                      pathname === item.href 
-                        ? "text-primary bg-primary/10" 
-                        : "text-muted-foreground hover:text-primary hover:bg-primary/5"
-                    )}
-                  >
-                    {t(`nav.${item.name.toLowerCase()}`)}
-                  </Link>
-                </motion.div>
+                  {t(`nav.${item.name.toLowerCase()}`)}
+                </Link>
               ))}
             </div>
 
             <div className="hidden md:flex items-center gap-3">
-              {/* Language Switcher - Moved next to CTA */}
               <LanguageSwitcher />
 
               {/* CTA Button */}
-              <motion.button 
+              <button 
                 onClick={handleTryNow}
-                whileHover={{ scale: 1.05 }} 
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-6 py-2.5 rounded-full font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                className="flex items-center gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-white px-6 py-2.5 rounded-full font-medium shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-colors duration-300"
               >
                 {t('nav.tryNow')}
-                <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={18} />
-              </motion.button>
+                <ArrowUpRight className="transition-transform" size={18} />
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              className="md:hidden p-2 rounded-full hover:bg-accent/10"
+            <button
+              className="md:hidden p-2 rounded-full hover:bg-accent/10 transition-colors duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
+            </button>
           </div>
         </div>
 
