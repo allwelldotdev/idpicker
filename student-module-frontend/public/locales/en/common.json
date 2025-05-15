@@ -41,7 +41,18 @@
     }
   },
   "features": {
-    "personalLearning": "Adaptive Learning Paths",
+    "personality": {
+      "title": "Adaptive Learning Paths",
+      "description": "Personalized learning experiences that adapt to your unique learning style and preferences"
+    },
+    "career": {
+      "title": "Career Guidance",
+      "description": "Expert insights and recommendations to align your learning with career goals"
+    },
+    "roadmap": {
+      "title": "Learning Roadmap",
+      "description": "Structured path visualization to guide you through your educational journey"
+    },
     "aiDriven": "Real-time AI Analysis",
     "smartRecommendations": "Intelligent Content Matching",
     "progressTracking": "Advanced Progress Analytics",
@@ -58,12 +69,14 @@
       "description": "Get matched with learning resources that specifically work for your learning style"
     }
   },
+
   "interactiveFeatures": {
     "badge": "Interactive Features",
     "title": "Unlock your learning potential",
     "subtitle": "Our platform adapts to your unique learning style, making education more effective and enjoyable",
     "learnMore": "Learn more"
   },
+  
   "dashboard": {
     "badge": "Powerful Dashboard",
     "title": "Your Learning Journey at a Glance",

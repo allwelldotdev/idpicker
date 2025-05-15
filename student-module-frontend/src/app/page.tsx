@@ -682,30 +682,7 @@ const Home = () => {
             viewport={{ once: true }}
             // className="relative rounded-3xl overflow-hidden border bg-card/50 backdrop-blur-sm"
           >
-            <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-accent/5 to-background/5" />
-              {/* Animated Circuit Lines */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={`circuit-${i}`}
-                  className="absolute h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-                  style={{
-                    top: `${15 + i * 12}%`,
-                    left: 0,
-                    right: 0,
-                  }}
-                  animate={{
-                    opacity: [0.2, 0.5, 0.2],
-                    scaleY: [1, 1.5, 1],
-                  }}
-                  transition={{
-                    duration: 2 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                  }}
-                />
-              ))}
-            </div>
+
 
 
             </motion.div>
