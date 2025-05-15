@@ -36,14 +36,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Build and Export
-        run: |
-          npm run build
-
+      - name: Build
+        run: npm run build
           
-      - name: Start
-        run: |
-          npm start
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: student-module-frontend/out
           
   deploy:
     environment:
