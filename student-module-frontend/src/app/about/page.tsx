@@ -4,28 +4,31 @@ import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { motion } from 'framer-motion'
 import { Brain, Users, Target, Award } from 'lucide-react'
+import { useTranslation } from 'react-i18next' // Changed import
 
 export default function AboutPage() {
+  const { t } = useTranslation('about'); // Changed namespace
+
   const features = [
     {
       icon: <Brain className="h-6 w-6" />,
-      title: "AI-Powered Analysis",
-      description: "Using advanced algorithms to understand your unique learning patterns"
+      title: t('features.aiAnalysis.title'),
+      description: t('features.aiAnalysis.description')
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Expert Team",
-      description: "Built by education specialists and AI researchers"
+      title: t('features.expertTeam.title'),
+      description: t('features.expertTeam.description')
     },
     {
       icon: <Target className="h-6 w-6" />,
-      title: "Personalized Learning",
-      description: "Tailored recommendations based on your learning style"
+      title: t('features.personalizedLearning.title'),
+      description: t('features.personalizedLearning.description')
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Proven Results",
-      description: "Helping thousands of students achieve their goals"
+      title: t('features.provenResults.title'),
+      description: t('features.provenResults.description')
     }
   ]
 
@@ -38,9 +41,9 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h1 className="text-4xl font-bold mb-6">About ID Picker</h1>
+          <h1 className="text-4xl font-bold mb-6">{t('pageTitle')}</h1>
           <p className="text-muted-foreground text-lg">
-            Empowering learners through personalized AI-driven education
+            {t('pageSubtitle')}
           </p>
         </motion.div>
 
@@ -49,13 +52,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('missionTitle')}</h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              At ID Picker, we believe every student has a unique way of learning. 
-              Our mission is to revolutionize education by providing personalized 
-              learning experiences through advanced AI technology. We analyze your 
-              learning style and create tailored pathways to help you achieve your 
-              educational goals efficiently and effectively.
+              {t('missionText')}
             </p>
           </motion.div>
           <motion.div

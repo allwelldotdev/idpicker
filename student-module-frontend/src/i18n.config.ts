@@ -8,15 +8,15 @@ i18n
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    defaultNS: 'common',
+    // defaultNS: 'common',
     fallbackLng: 'en',
     supportedLngs: ['en', 'tr'],
-    ns: ['common'],
+    ns: ['home', 'about'], // Changed namespace
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}/translation.json', // Updated path
     },
     detection: {
-      order: ['localStorage', 'cookie', 'htmlTag'],
+      order: ['path', 'localStorage', 'cookie', 'htmlTag'],
       caches: ['localStorage', 'cookie'],
     },
     react: {

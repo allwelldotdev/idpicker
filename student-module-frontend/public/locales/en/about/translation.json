@@ -1,0 +1,24 @@
+{
+  "pageTitle": "About ID Picker",
+  "pageSubtitle": "Empowering learners through personalized AI-driven education",
+  "missionTitle": "Our Mission",
+  "missionText": "At ID Picker, we believe every student has a unique way of learning. Our mission is to revolutionize education by providing personalized learning experiences through advanced AI technology. We analyze your learning style and create tailored pathways to help you achieve your educational goals efficiently and effectively.",
+  "features": {
+    "aiAnalysis": {
+      "title": "AI-Powered Analysis",
+      "description": "Using advanced algorithms to understand your unique learning patterns"
+    },
+    "expertTeam": {
+      "title": "Expert Team",
+      "description": "Built by education specialists and AI researchers"
+    },
+    "personalizedLearning": {
+      "title": "Personalized Learning",
+      "description": "Tailored recommendations based on your learning style"
+    },
+    "provenResults": {
+      "title": "Proven Results",
+      "description": "Helping thousands of students achieve their goals"
+    }
+  }
+}
