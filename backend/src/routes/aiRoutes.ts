@@ -1,6 +1,6 @@
 import express from "express";
 import RouteController from "../utils/RouteController.js";
-import { RouteMetadataKey } from "../utils/metadata.js";
+import metadataKeys from "../utils/metadataKeys.js";
 import AIRootController from "../controllers/ai/root.js";
 import AICharAnalysisController from "../controllers/ai/characterAnalysis.js";
 import AICareerRecController from "../controllers/ai/careerRecommendations.js";
@@ -14,7 +14,7 @@ const routerCareerRec = express.Router();
 const routerReportGen = express.Router();
 
 const routeController = new RouteController({
-  route: RouteMetadataKey,
+  route: metadataKeys.route,
 });
 
 // Sub-routing: AI Read Root

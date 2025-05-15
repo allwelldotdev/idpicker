@@ -1,5 +1,6 @@
 import { Application, Router, RequestHandler } from "express";
-import { MetadataKeys, RouteMetadata } from "../types/routeTypes.js";
+import { MetadataKeys } from "../utils/metadataKeys.js";
+import { RouteMetadata } from "../types/RouteMetadata.js";
 import "reflect-metadata";
 
 export default class RouteController {
@@ -36,7 +37,7 @@ export default class RouteController {
           const { method, path } = routeMetadata;
 
           // Check if method has middleware metadata, then read them
-          const middlerware: RequestHandler[] =
+          const middlewares: RequestHandler[] =
             Reflect.getMetadata(
               this.metadataKeys.middleware,
               prototype,
@@ -47,13 +48,22 @@ export default class RouteController {
           const handler = instance[propertyName].bind(instance);
 
           // Combine middleware and handler
-          const routeHandlers: RequestHandler[] = [...middlerware, handler];
+          const routeHandlers: RequestHandler[] = [...middlewares, handler];
 
           // Register route with Express
           console.log(
-            `Registering route: ${method} "${path}" with ${middlerware.length} middlerware(s) and controller bound to "${instance.constructor.name}.${propertyName}" method.`
+            `Registering route: ${method} "${path}" with ${middlewares.length} middlerware(s) and controller bound to "${instance.constructor.name}.${propertyName}" method.`
           );
-          (app as any)[method.toLowerCase()](path, ...routeHandlers);
+
+          // app[method](path, ...routeHandlers); // Resulted in type error (See fix below)
+
+          // Fix: Cast the dynamically accessed method to a function type
+          // that explicitly accepts a rest parameter of RequestHandlers
+          // and call the casted methods with the spread argument.
+          // This reassures TypeScript that the spread is valid here.
+          (
+            app[method] as (path: string, ...handlers: RequestHandler[]) => void
+          )(path, ...routeHandlers);
         }
       });
     });
