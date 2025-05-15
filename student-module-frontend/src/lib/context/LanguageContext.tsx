@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import '@/lib/i18n';
 import { useTranslation } from 'react-i18next';
+import '@/i18n.config';  // Updated import
 
 interface LanguageContextType {
   language: string;
@@ -25,7 +25,10 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   React.useEffect(() => {
     const savedLang = localStorage.getItem('language');
     if (savedLang && ['en', 'tr'].includes(savedLang)) {
-      i18n.changeLanguage(savedLang);
+      i18n.changeLanguage(savedLang).then(() => {
+        // Force reload translations
+        i18n.reloadResources([savedLang], ['about']);
+      });
     }
     setIsLoaded(true);
   }, [i18n]);

@@ -2,11 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ frontend ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -19,15 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: frontend
-          
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18.17.0"
+          node-version: 18
           cache: 'npm'
+
           cache-dependency-path: 'student-module-frontend/package-lock.json'
       
       - name: Change directory
@@ -42,11 +40,11 @@ jobs:
         run: |
           cd student-module-frontend
           npm run build
+
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: student-module-frontend/out
 
   deploy:
     environment:

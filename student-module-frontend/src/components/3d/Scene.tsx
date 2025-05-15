@@ -28,7 +28,7 @@ const Scene = () => {
           <mesh>
             <torusGeometry args={[8, 3, 16, 100]} />
             <meshStandardMaterial 
-              color="#007AFF" 
+              color="#0000000" 
               wireframe 
               transparent
               opacity={0.1}

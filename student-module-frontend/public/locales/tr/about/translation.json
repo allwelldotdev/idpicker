@@ -1,0 +1,24 @@
+{
+  "pageTitle": "ID Picker Hakkında",
+  "pageSubtitle": "Kişiselleştirilmiş yapay zeka destekli eğitim ile öğrencileri güçlendiriyoruz",
+  "missionTitle": "Misyonumuz",
+  "missionText": "ID Picker olarak, her öğrencinin kendine özgü bir öğrenme şekli olduğuna inanıyoruz. Misyonumuz, gelişmiş yapay zeka teknolojisi aracılığıyla kişiselleştirilmiş öğrenme deneyimleri sunarak eğitimi dönüştürmektir. Öğrenme stilinizi analiz ediyor ve eğitim hedeflerinize verimli ve etkili bir şekilde ulaşmanıza yardımcı olacak özel yollar oluşturuyoruz.",
+  "features": {
+    "aiAnalysis": {
+      "title": "Yapay Zeka Destekli Analiz",
+      "description": "Benzersiz öğrenme modellerinizi anlamak için gelişmiş algoritmalar kullanıyoruz"
+    },
+    "expertTeam": {
+      "title": "Uzman Ekip",
+      "description": "Eğitim uzmanları ve yapay zeka araştırmacıları tarafından geliştirildi"
+    },
+    "personalizedLearning": {
+      "title": "Kişiselleştirilmiş Öğrenme",
+      "description": "Öğrenme stilinize göre özelleştirilmiş öneriler"
+    },
+    "provenResults": {
+      "title": "Kanıtlanmış Sonuçlar",
+      "description": "Binlerce öğrencinin hedeflerine ulaşmasına yardımcı oluyoruz"
+    }
+  }
+}

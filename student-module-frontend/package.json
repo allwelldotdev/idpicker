@@ -2,8 +2,9 @@
   "name": "idpicker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sameerun2.github.io/student-module-frontend",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',  // Enable static export
+  distDir: 'out',   // Specify output directory
   reactStrictMode: true,
   eslint: {
     // We're setting this to true to avoid ESLint errors during build

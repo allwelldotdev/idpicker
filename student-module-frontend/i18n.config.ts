@@ -11,9 +11,9 @@ i18n
     defaultNS: 'common',
     fallbackLng: 'en',
     supportedLngs: ['en', 'tr'],
-    ns: ['common'],
+    ns: ['common', 'home/about'],
     backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}/translation.json',
     },
     detection: {
       order: ['localStorage', 'cookie', 'htmlTag'],

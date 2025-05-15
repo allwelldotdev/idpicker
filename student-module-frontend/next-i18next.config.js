@@ -3,6 +3,7 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'tr'],
   },
-  localePath: typeof window === 'undefined' ? require('path').resolve('./public/locales') : '/locales',
-  reloadOnPrerender: process.env.NODE_ENV === 'development',
+  defaultNS: 'common',
+  localePath: './public/locales',
+  ns: ['common', 'home/about/translation'],
 };

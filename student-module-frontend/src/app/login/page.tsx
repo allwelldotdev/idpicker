@@ -37,14 +37,13 @@ export default function LoginPage() {
         </div>
         
         <div className="relative z-20 flex items-center text-lg font-medium">
-          <motion.img
-            initial={{ rotate: -10 }}
-            animate={{ rotate: 0 }}
-            transition={{ duration: 0.5 }}
-            src="/images/logos/Logo/svg/logo.svg"
-            alt="ID Picker Logo"
-            className="h-14 w-auto drop-shadow-lg"
-          />
+          <Link href="/">
+            <motion.img
+              src="/images/logos/Logo/svg/logo.svg"
+              alt="ID Picker Logo"
+              className="h-14 w-auto drop-shadow-lg hover:scale-105 transition-transform"
+            />
+          </Link>
         </div>
         
         <motion.div

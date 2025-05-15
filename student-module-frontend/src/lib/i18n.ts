@@ -2,8 +2,8 @@
 
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enTranslations from '../../public/locales/en/common.json';
-import trTranslations from '../../public/locales/tr/common.json';
+import enTranslations from '../../public/locales/en/home/common.json';
+import trTranslations from '../../public/locales/tr/home/common.json';
 
 i18next
   .use(initReactI18next)

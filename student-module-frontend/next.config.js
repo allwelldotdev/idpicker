@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'standalone',
+  // Remove any middleware or update output strategy
+  trailingSlash: true,
   images: {
-    unoptimized: true,
-  },
-  basePath: process.env.NODE_ENV === 'production' ? '/student-module-frontend' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/student-module-frontend/' : '',
+    unoptimized: true
+  }
 }
 
 module.exports = nextConfig

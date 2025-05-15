@@ -10,11 +10,11 @@
     "partners": "Partners"
   },
   "hero": {
-    "title1": "Unlock Your Learning",
-    "title2": "Potential with AI",
-    "subtitle": "Experience a revolutionary approach to education through advanced AI analysis and personalized learning paths tailored to your unique style",
-    "getStarted": "Start Your Journey",
-    "howItWorks": "See How It Works"
+    "title1": "Transform Your Learning",
+    "title2": "Journey with AI",
+    "subtitle": "Discover a groundbreaking educational experience powered by cutting-edge AI technology that adapts and evolves with your unique learning signature",
+    "getStarted": "Begin Your Transform",
+    "howItWorks": "Explore the Magic"
   },
   "demo": {
     "title": "Adaptive Learning Experience",
@@ -41,13 +41,24 @@
     }
   },
   "features": {
-    "personalLearning": "Adaptive Learning Paths",
+    "personality": {
+      "title": "Smart Learning Pathways",
+      "description": "Experience education reimagined through AI-powered paths that evolve with your learning style"
+    },
+    "career": {
+      "title": "Strategic Career Navigation",
+      "description": "Transform your career trajectory with data-driven insights and expert guidance"
+    },
+    "roadmap": {
+      "title": "Dynamic Learning Blueprint",
+      "description": "Navigate your educational journey with precision through our intelligent mapping system"
+    },
     "aiDriven": "Real-time AI Analysis",
     "smartRecommendations": "Intelligent Content Matching",
     "progressTracking": "Advanced Progress Analytics",
     "learningStyle": {
-      "title": "Learning Style Analysis",
-      "description": "Our AI analyzes how you learn best across multiple dimensions, identifying your unique pattern"
+      "title": "AI-Powered Learning DNA",
+      "description": "Uncover your unique learning profile through our sophisticated AI analysis across multiple cognitive dimensions"
     },
     "personalizedPathways": {
       "title": "Personalized Pathways",
@@ -58,12 +69,14 @@
       "description": "Get matched with learning resources that specifically work for your learning style"
     }
   },
+
   "interactiveFeatures": {
     "badge": "Interactive Features",
     "title": "Unlock your learning potential",
     "subtitle": "Our platform adapts to your unique learning style, making education more effective and enjoyable",
     "learnMore": "Learn more"
   },
+  
   "dashboard": {
     "badge": "Powerful Dashboard",
     "title": "Your Learning Journey at a Glance",
@@ -107,28 +120,28 @@
     "countriesReached": "Countries Reached"
   },
   "testimonials": {
-    "title": "What Our Users Say",
-    "subtitle": "Learn how our platform has transformed the learning experience for students across the globe",
+    "title": "Success Stories",
+    "subtitle": "Discover how our AI-powered platform is revolutionizing education worldwide",
     "person1": {
       "name": "Sarah Johnson",
       "role": "Engineering Student",
-      "quote": "This platform completely changed how I study. The personalized recommendations match perfectly with how I learn best."
+      "quote": "The personalized AI insights revolutionized my study approach. My comprehension and retention improved by 80% within weeks."
     },
     "person2": {
       "name": "David Chen",
       "role": "Medical Student",
-      "quote": "The AI analysis of my learning style was eye-opening. My study efficiency has improved dramatically."
+      "quote": "The platform's adaptive learning technology helped me master complex medical concepts in half the usual time. It's been transformative."
     },
     "person3": {
       "name": "Maria Rodriguez",
       "role": "Language Learner",
-      "quote": "I've tried many learning platforms before, but this is the only one that truly adapts to my unique learning preferences."
+      "quote": "Finally, a platform that truly understands how I learn. My language acquisition speed has doubled since using this AI-powered system."
     }
   },
   "cta": {
-    "title": "Ready to Transform Your Learning Experience?",
-    "highlight": "Start Today",
-    "subtitle": "Join thousands of students discovering their optimal learning path with our AI-powered platform",
-    "getStarted": "Get Started Free"
+    "title": "Ready to Revolutionize Your Learning Journey?",
+    "highlight": "Transform Today",
+    "subtitle": "Join over 100,000 successful learners who've discovered their true potential through our AI-powered platform",
+    "getStarted": "Start Your Transformation"
   }
 }

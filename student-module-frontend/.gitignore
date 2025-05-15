@@ -32,7 +32,7 @@ yarn-error.log*
 
 # env files - only exclude sensitive ones
 .env
-.env.local
+# .env.local
 .env.development.local
 .env.test.local
 .env.production.local
@@ -40,10 +40,10 @@ yarn-error.log*
 # allow example env file and production env (without secrets)
 !.env.example
 !.env.production
+!yarn.lock
 
 # vercel
 .vercel
 
 # typescript
-*.tsbuildinfo
-next-env.d.ts
+
